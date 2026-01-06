@@ -7,12 +7,12 @@ import 'package:flutter/scheduler.dart';
 
 export 'custom_dropdown.dart';
 
+part 'models/controllers.dart';
 // models
 part 'models/custom_dropdown_decoration.dart';
 part 'models/custom_dropdown_list_filter.dart';
 part 'models/disabled_decoration.dart';
 part 'models/list_item_decoration.dart';
-part 'models/controllers.dart';
 part 'models/search_field_decoration.dart';
 // utils
 part 'utils/signatures.dart';
@@ -545,8 +545,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
   void didUpdateWidget(covariant CustomDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (widget.initialItem != oldWidget.initialItem &&
-        selectedItemNotifier.value != widget.initialItem) {
+    if (widget.initialItem != oldWidget.initialItem) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         selectedItemNotifier.value = widget.initialItem;
       });
